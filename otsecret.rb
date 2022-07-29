@@ -5,20 +5,20 @@
 class Otsecret < Formula
   desc ""
   homepage "https://github.com/envoy/homebrew-tools"
-  version "0.0.2"
+  version "0.0.3"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/envoy/otsecret/releases/download/v0.0.2/otsecret_0.0.2_Darwin_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "3772e8613d2fab575678a4b116214259ab27d0315f929dd911173926653a53a2"
+      url "https://github.com/envoy/otsecret/releases/download/v0.0.3/otsecret_0.0.3_Darwin_arm64.tar.gz"
+      sha256 "017e77f0d71240ae1e712311e43acfc1ad90f44a50952ee592f9baa77a1675d6"
 
       def install
         bin.install "otsecret"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/envoy/otsecret/releases/download/v0.0.2/otsecret_0.0.2_Darwin_x86_64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "c7f00a17de4b64fcae2385453bdc127ce7f7e2b5c9d2ae6abe4dff0cec9a48bf"
+      url "https://github.com/envoy/otsecret/releases/download/v0.0.3/otsecret_0.0.3_Darwin_x86_64.tar.gz"
+      sha256 "eea64c37e62fbd6b8412d37ffa164297bc35ad7351bd6ffa3095bc64fe717767"
 
       def install
         bin.install "otsecret"
@@ -27,17 +27,17 @@ class Otsecret < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/envoy/otsecret/releases/download/v0.0.2/otsecret_0.0.2_Linux_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "40ce0b7fa20e612d63c90b4e2fc3457514482c0b07ec1c68d7fab4b3e68505e3"
+    if Hardware::CPU.intel?
+      url "https://github.com/envoy/otsecret/releases/download/v0.0.3/otsecret_0.0.3_Linux_x86_64.tar.gz"
+      sha256 "48669f5c6872994362a16db72af473bf43d9483df7d79fd07c9b457b535cda92"
 
       def install
         bin.install "otsecret"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/envoy/otsecret/releases/download/v0.0.2/otsecret_0.0.2_Linux_x86_64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "eecb6c97be8350a3bbf744791c4cf16deab22bd6f09e7fdf58e80c87682d6c19"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/envoy/otsecret/releases/download/v0.0.3/otsecret_0.0.3_Linux_arm64.tar.gz"
+      sha256 "0d6b46122630424513ce2dbb10f7c8e1515a321c480dd8363bcc23ebb36b035e"
 
       def install
         bin.install "otsecret"
