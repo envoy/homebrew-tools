@@ -6,20 +6,20 @@ require_relative "lib/private_strategy"
 class Otsecret < Formula
   desc ""
   homepage "https://github.com/envoy/homebrew-tools"
-  version "0.0.5"
+  version "0.0.6"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/envoy/otsecret/releases/download/v0.0.5/otsecret_0.0.5_Darwin_x86_64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "99fd71b621673f6b6c771d6c008f2fe94803ba0d896dbcb1d6fbf3bdadc60cec"
+      url "https://github.com/envoy/otsecret/releases/download/v0.0.6/otsecret_0.0.6_Darwin_x86_64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "cf6d7c2390c85b9f6ccb587fddc8f4a199b4aed515e652a08a978f277699b7ee"
 
       def install
         bin.install "otsecret"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/envoy/otsecret/releases/download/v0.0.5/otsecret_0.0.5_Darwin_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "80c3d1c5099f1e7210988279e9fd8d6329fcbab49da9122db8b5289ca1a9beb5"
+      url "https://github.com/envoy/otsecret/releases/download/v0.0.6/otsecret_0.0.6_Darwin_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "d9aadd3b992312be7276c131d5b1689dc1ccb870ddc86b5bbd40c40dbedaedb6"
 
       def install
         bin.install "otsecret"
@@ -29,16 +29,16 @@ class Otsecret < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/envoy/otsecret/releases/download/v0.0.5/otsecret_0.0.5_Linux_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "2e64b89237c37565525b04a7ae77f6d97f64575e09463911a2447da530017722"
+      url "https://github.com/envoy/otsecret/releases/download/v0.0.6/otsecret_0.0.6_Linux_arm64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "589bcbc11595d9a0248c69a8bbac01eee8a045fe3ba982b8405fffbdc99f4272"
 
       def install
         bin.install "otsecret"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/envoy/otsecret/releases/download/v0.0.5/otsecret_0.0.5_Linux_x86_64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "43e5ae36e09dd0c5134ad1093b4cae7bcdc95cf74d05e552075843a74568c9f3"
+      url "https://github.com/envoy/otsecret/releases/download/v0.0.6/otsecret_0.0.6_Linux_x86_64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "3f0a7d89c1dec1f249b29143052a0ecd3a669d7dd21df07cd107dfb674cb4aad"
 
       def install
         bin.install "otsecret"
