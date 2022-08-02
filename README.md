@@ -19,6 +19,15 @@ export HOMEBREW_GITHUB_API_TOKEN=<use your personal PAT that has premissions to 
 brew install otsecret
 ```
 
+#### Prerequisite
+
+`otsecret` relies on One Password CLI to store and share sensitive secrets. You need to install One Password CLI before you can use the app.
+
+* To install 1Password CLI (mac) - refer [here](https://1password.com/downloads/mac/)
+* To get started with 1Password CLI - refer [here](https://developer.1password.com/docs/cli/get-started/)
+* To add an account to 1Password CLI - refer [here](https://developer.1password.com/docs/cli/get-started/#sign-in-to-your-account)
+* Configure 1Password CLI biometric unlock - refer [here](https://developer.1password.com/docs/cli/get-started/#turn-on-biometric-unlock)
+
 #### Get help
 
 ```
@@ -30,8 +39,8 @@ otsecret -h
 The tool needs a yaml configuration as shown below
 
 ```
-vault: set the vault id where the secrets will be maintained
-sendgrid-api-key: set the key to send the emails
+vault: set the vault id where the secrets will be maintained and shared
+sendgrid-api-key: set Sendgrid API Key to send emails
 ```
 
 Store the file as `.otsecret` in the home directory
