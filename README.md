@@ -8,4 +8,6 @@ Refer to this [article](https://docs.brew.sh/Formula-Cookbook) to learn how to c
 brew tap envoy/tools
 ```
 
+### Tools
+
 * [otsecret](otsecret.md)
