@@ -2,46 +2,23 @@
 
 Refer to this [article](https://docs.brew.sh/Formula-Cookbook) to learn how to custom homebrew your organization tools.
 
-#### Homebrew Tap?
+#### Homebrew Tap
+
+> Command to tap all the formulas built at Envoy
 
 ```
 brew tap envoy/tools
 ```
 
-#### Update all package definitions
+#### Brew commands
 
-```
-brew update
-```
-
-#### List outdated local installed packages
-
-```
-brew outdated
-```
-
-#### Upgrade all formulas
-
-```
-brew upgrade
-```
-
-#### Upgrade a specific formula
-
-```
-brew upgrade formula-name
-
-ex:
-brew upgrade otsecret
-```
-
-
-#### Remove a formula
-
-```
-brew cleanup formula-name
-brew remove --force formula-name
-```
+| | Command |
+| --- | --- |
+| Update all package definitions | `brew update` |
+| List outdate local installed packages | `brew outdated` |
+| Upgrade all formulas | `brew upgrade` |
+| Upgrade a specific formula | `brew upgrade <formula-name>` |
+| Remove a formula | `brew cleanup <formula-name>` and then `brew remove --force <formula-name>` |
 
 ### Tools
 
