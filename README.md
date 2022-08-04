@@ -23,3 +23,4 @@ brew tap envoy/tools
 ### Tools
 
 * [otsecret](otsecret.md)
+* [k8sconfig](k8sconfig.md)
