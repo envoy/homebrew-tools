@@ -32,6 +32,7 @@ The tool needs a yaml configuration as shown below
 ```
 jira-user: your jira account email ID
 jira-token: your jira account API key
+github-token: your Github PAT token (ensure it has permissions to repo and workflow)
 ```
 
 Store the file as `.k8sconfig` in the home directory
