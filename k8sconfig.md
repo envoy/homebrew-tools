@@ -29,10 +29,12 @@ brew install k8sconfig
 
 The tool needs a yaml configuration as shown below
 
+> Create your JIRA api token here https://id.atlassian.com/manage-profile/security/api-tokens
+
 ```
 jira-user: your jira account email ID
 jira-token: your jira account API key
-github-token: your Github PAT token (ensure it has permissions to repo and workflow)
+github-token: your Github PAT token (ensure it has permissions to "repo and workflow")
 ```
 
 Store the file as `.k8sconfig` in the home directory
@@ -42,9 +44,11 @@ Store the file as `.k8sconfig` in the home directory
 ```
 gp@mbp ~ % echo "jira-user: abc" >> ~/.k8sconfig
 gp@mbp ~ % echo "jira-token: abc-token" >> ~/.k8sconfig
+gp@mbp ~ % echo "github-token:: your_github_token" >> ~/.k8sconfig
 gp@mbp ~ % cat ~/.k8sconfig
 jira-user: abc
 jira-token: abc-token
+github-token:: your_github_token
 ```
 
 > Replace `abc` and `abc-token` with your jira account values
