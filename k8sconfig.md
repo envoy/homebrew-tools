@@ -44,11 +44,11 @@ Store the file as `.k8sconfig` in the home directory
 ```
 gp@mbp ~ % echo "jira-user: abc" >> ~/.k8sconfig
 gp@mbp ~ % echo "jira-token: abc-token" >> ~/.k8sconfig
-gp@mbp ~ % echo "github-token:: your_github_token" >> ~/.k8sconfig
+gp@mbp ~ % echo "github-token: your_github_token" >> ~/.k8sconfig
 gp@mbp ~ % cat ~/.k8sconfig
 jira-user: abc
 jira-token: abc-token
-github-token:: your_github_token
+github-token: your_github_token
 ```
 
 > Replace `abc` and `abc-token` with your jira account values
