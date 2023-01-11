@@ -52,3 +52,9 @@ github-token: your_github_token
 ```
 
 > Replace `abc` and `abc-token` with your jira account values
+
+#### Running k8sconfig
+In your app directory run:
+```bash
+k8sconfig
+```
