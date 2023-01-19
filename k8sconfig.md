@@ -13,7 +13,7 @@ https://github.com/envoy/k8sconfig/
 > The installation needs your personal GitHub PAT token, since the repository is internal to Envoy. Homebrew download strategy needs the GitHub PAT to download the repository package from the internal release.
 
 ```
-export HOMEBREW_GITHUB_API_TOKEN=<use your personal PAT that has premissions to read PACKAGE> 
+export HOMEBREW_GITHUB_API_TOKEN=<use your personal PAT that has repo permissions> 
 brew install k8sconfig
 ```
 
