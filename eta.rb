@@ -9,17 +9,17 @@ class Eta < Formula
   version "1.0.11"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/envoy/eta/releases/download/v1.0.11/eta_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "7c32af996b4b29c3bbdfc353836509588ebc1f1365c50c6618eb613672650885"
+    if Hardware::CPU.arm?
+      url "https://github.com/envoy/eta/releases/download/v1.0.11/eta_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "7e6f8c397b4ffc5d4c8485bf1fd039fe95893a853ee6bc4994aced2ffe9a5443"
 
       def install
         bin.install "eta"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/envoy/eta/releases/download/v1.0.11/eta_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "663d64ed3223075029ff9cc2d0ed69538427c094b04b349822d17d4eb610ad74"
+    if Hardware::CPU.intel?
+      url "https://github.com/envoy/eta/releases/download/v1.0.11/eta_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "d8895a2a7897075e6e93db1d7b21afbc6372030370c1a2ed3828dae15f43567c"
 
       def install
         bin.install "eta"
@@ -30,7 +30,7 @@ class Eta < Formula
   on_linux do
     if Hardware::CPU.intel?
       url "https://github.com/envoy/eta/releases/download/v1.0.11/eta_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "038da44e32fe117ebfdd9175ed8927bb884419dfe829da07760a00d1f100ac4e"
+      sha256 "d47dd111a69b6aa402bbabb78e08a81f89a5fa626f7b1941b2671eb17180c697"
 
       def install
         bin.install "eta"
@@ -38,7 +38,7 @@ class Eta < Formula
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/envoy/eta/releases/download/v1.0.11/eta_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "1546c14c2b7ee1f806f31601de4121d47c2ea3fdd476177785d8a2d48e60a596"
+      sha256 "0a1b835a030007d5e9469c785ce012077efa477279e7d4c5cbcffbbc169288e0"
 
       def install
         bin.install "eta"
