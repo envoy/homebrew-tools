@@ -17,7 +17,11 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   end
 
   def download_url
-    "https://#{@github_token}@github.com/#{@owner}/#{@repo}/#{@filepath}"
+      "https://#{@github_token}@api.github.com/repos/#{@owner}/#{@repo}/releases/assets/#{asset_id}",
+      headers: [
+        "Accept: application/octet-stream",
+        "Authorization: bearer #{ENV["HOMEBREW_GITHUB_API_TOKEN"]}"
+      ]
   end
 
   private
@@ -61,7 +65,7 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
   end
 
   def download_url
-      url "https://#{@github_token}@api.github.com/repos/#{@owner}/#{@repo}/releases/assets/#{asset_id}",
+      "https://#{@github_token}@api.github.com/repos/#{@owner}/#{@repo}/releases/assets/#{asset_id}",
       headers: [
         "Accept: application/octet-stream",
         "Authorization: bearer #{ENV["HOMEBREW_GITHUB_API_TOKEN"]}"
