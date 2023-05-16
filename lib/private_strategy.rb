@@ -17,17 +17,13 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   end
 
   def download_url
-      "https://#{@github_token}@api.github.com/repos/#{@owner}/#{@repo}/releases/assets/#{asset_id}",
-      headers: [
-        "Accept: application/octet-stream",
-        "Authorization: bearer #{ENV["HOMEBREW_GITHUB_API_TOKEN"]}"
-      ]
+    "https://github.com/#{@owner}/#{@repo}/#{@filepath}"
   end
 
   private
 
   def _fetch(url:, resolved_url:, timeout:)
-    curl_download download_url, to: temporary_path
+    curl_download download_url, "--header", "Accept: application/octet-stream", "--header", "Authorization: bearer #{ENV["HOMEBREW_GITHUB_API_TOKEN"]}" to: temporary_path
   end
 
   def set_github_token
@@ -65,17 +61,13 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
   end
 
   def download_url
-      "https://#{@github_token}@api.github.com/repos/#{@owner}/#{@repo}/releases/assets/#{asset_id}",
-      headers: [
-        "Accept: application/octet-stream",
-        "Authorization: bearer #{ENV["HOMEBREW_GITHUB_API_TOKEN"]}"
-      ]
+    "https://api.github.com/repos/#{@owner}/#{@repo}/releases/assets/#{asset_id}"
   end
 
   private
 
   def _fetch(url:, resolved_url:, timeout:)
-    curl_download download_url, "--header", "Accept: application/octet-stream", to: temporary_path
+    curl_download download_url, "--header", "Accept: application/octet-stream", "--header", "Authorization: bearer #{ENV["HOMEBREW_GITHUB_API_TOKEN"]}" to: temporary_path
   end
 
   def asset_id
