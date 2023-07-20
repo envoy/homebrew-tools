@@ -37,7 +37,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
 
   def validate_github_repository_access!
     GitHub.repository(@owner, @repo)
-  rescue GitHub::API::HTTPNotFoundError
+  rescue GitHub::HTTPNotFoundError
     message = <<~EOS
       HOMEBREW_GITHUB_API_TOKEN can not access the repository: #{@owner}/#{@repo}
       This token may not have permission to access the repository or the url of formula may be incorrect.
@@ -45,10 +45,14 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     raise CurlDownloadStrategyError, message
   end
 end
-  
+
 class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDownloadStrategy
   def initialize(url, name, version, **meta)
     super
+  end
+
+  def resolve_url_basename_time_file_size(url, timeout: nil)
+    [download_url, "", Time.now, 0, false]
   end
 
   def parse_url_pattern
@@ -61,13 +65,13 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
   end
 
   def download_url
-    "https://#{@github_token}@api.github.com/repos/#{@owner}/#{@repo}/releases/assets/#{asset_id}"
+    "https://api.github.com/repos/#{@owner}/#{@repo}/releases/assets/#{asset_id}"
   end
 
   private
 
   def _fetch(url:, resolved_url:, timeout:)
-    curl_download download_url, "--header", "Accept: application/octet-stream", to: temporary_path
+    curl_download download_url, "--header", "Accept: application/octet-stream", "--header", "Authorization: token #{@github_token}", to: temporary_path
   end
 
   def asset_id
@@ -83,6 +87,7 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
   end
 
   def fetch_release_metadata
-    GitHub.get_release(@owner, @repo, @tag)
+    release_url = "https://api.github.com/repos/#{@owner}/#{@repo}/releases/tags/#{@tag}"
+    GitHub::API.open_rest(release_url)
   end
 end
