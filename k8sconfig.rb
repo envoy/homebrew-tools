@@ -6,7 +6,7 @@ require_relative "lib/private_strategy"
 class K8sconfig < Formula
   desc ""
   homepage "https://github.com/envoy/homebrew-tools"
-  version "0.12.0"
+  version "0.11.0"
 
   on_macos do
     if Hardware::CPU.arm?
