@@ -11,7 +11,7 @@ class Eta < Formula
   on_macos do
     on_intel do
       url "https://github.com/envoy/eta/releases/download/v1.16/eta_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "bdc7975cc9bd392481eba8357b1234f5e9a95865eb52878c19182f2d53b385b0"
+      sha256 "73973d8e8c556a4ee1e253e16c8d77dbd42cceeaddcba809fbd32b786ab65972"
 
       def install
         bin.install "eta"
@@ -19,7 +19,7 @@ class Eta < Formula
     end
     on_arm do
       url "https://github.com/envoy/eta/releases/download/v1.16/eta_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "1b53f300b084fc46b1c7089d3f94f757025808963c75feb7a9bec9f1029f4407"
+      sha256 "7de9947efcd3bc6d6b5aa0e13e5ad03ad8608a385cd33cedc3f07d5d2a8605d6"
 
       def install
         bin.install "eta"
@@ -31,7 +31,7 @@ class Eta < Formula
     on_intel do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/envoy/eta/releases/download/v1.16/eta_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "1f2a72c30495f70440f854ad9fdad901ab9e3838f8cccad0e255d75ed7daa808"
+        sha256 "0bd81aa1df70f873efb331070403c57a528f6454a99eb70506ac7618d229b782"
 
         def install
           bin.install "eta"
@@ -41,7 +41,7 @@ class Eta < Formula
     on_arm do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/envoy/eta/releases/download/v1.16/eta_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "334ea1fe6c334fd8339880ee196477a51d07d68fb9a2872c0ad4824aa3190188"
+        sha256 "593143a20214019c3858ef74d582ff08bc8bb9b19eaa6207109dc3b7efe5ac87"
 
         def install
           bin.install "eta"
