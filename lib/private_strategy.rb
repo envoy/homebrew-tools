@@ -2,6 +2,8 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   require "utils/formatter"
   require "utils/github"
 
+  GitHubHTTPNotFoundError = defined?(GitHub::API::HTTPNotFoundError) ? GitHub::API::HTTPNotFoundError : GitHub::HTTPNotFoundError
+
   def initialize(url, name, version, **meta)
     super
     parse_url_pattern
@@ -37,7 +39,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
 
   def validate_github_repository_access!
     GitHub.repository(@owner, @repo)
-  rescue GitHub::HTTPNotFoundError
+  rescue GitHubHTTPNotFoundError
     message = <<~EOS
       HOMEBREW_GITHUB_API_TOKEN can not access the repository: #{@owner}/#{@repo}
       This token may not have permission to access the repository or the url of formula may be incorrect.
