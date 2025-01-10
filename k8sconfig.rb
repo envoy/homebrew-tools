@@ -6,20 +6,20 @@ require_relative "lib/private_strategy"
 class K8sconfig < Formula
   desc ""
   homepage "https://github.com/envoy/homebrew-tools"
-  version "0.17.1"
+  version "0.18.0"
 
   on_macos do
-    on_intel do
-      url "https://github.com/envoy/k8sconfig/releases/download/v0.17.1/k8sconfig_Darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "2bec906a9ab6035d7e3a65f766f4d6e1637c80cca415fc790876c00006896c4e"
+    if Hardware::CPU.intel?
+      url "https://github.com/envoy/k8sconfig/releases/download/v0.18.0/k8sconfig_Darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "2f2673ff64cff79942d1afbfc73e934b7e562e094916aa4fadbc7f513a132f6f"
 
       def install
         bin.install "k8sconfig"
       end
     end
-    on_arm do
-      url "https://github.com/envoy/k8sconfig/releases/download/v0.17.1/k8sconfig_Darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "4443eaf9187918c175e8d5be7f2086b29496d1fb8efb5ca53456ef5ceefd1ed9"
+    if Hardware::CPU.arm?
+      url "https://github.com/envoy/k8sconfig/releases/download/v0.18.0/k8sconfig_Darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "ba5c77fe44bf504e2ae1bbbb4b7f75150b7746ef8332115de6f700f9294bc1b0"
 
       def install
         bin.install "k8sconfig"
@@ -28,20 +28,20 @@ class K8sconfig < Formula
   end
 
   on_linux do
-    on_intel do
+    if Hardware::CPU.intel?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/envoy/k8sconfig/releases/download/v0.17.1/k8sconfig_Linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "2e93f62aec2941f3422e953c0032b555a9b33a97c442e8b2048b87619fe240fc"
+        url "https://github.com/envoy/k8sconfig/releases/download/v0.18.0/k8sconfig_Linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+        sha256 "c431df5597b8647047a16dbf193847f22737eb60449defbd1bf13fa022e140e8"
 
         def install
           bin.install "k8sconfig"
         end
       end
     end
-    on_arm do
+    if Hardware::CPU.arm?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/envoy/k8sconfig/releases/download/v0.17.1/k8sconfig_Linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "8d0b7fd239b34297581cee082aa3d4b900c200165a42829b3074fc6a2e0360ee"
+        url "https://github.com/envoy/k8sconfig/releases/download/v0.18.0/k8sconfig_Linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+        sha256 "965663d8a6fbc621893cac687d36d4c066b03d35a823adb408c93af665a5b6b9"
 
         def install
           bin.install "k8sconfig"
