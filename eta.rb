@@ -6,20 +6,20 @@ require_relative "lib/private_strategy"
 class Eta < Formula
   desc ""
   homepage "https://github.com/envoy/homebrew-tools"
-  version "1.1.11"
+  version "1.1.12"
 
   on_macos do
-    on_intel do
-      url "https://github.com/envoy/eta/releases/download/v1.1.11/eta_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "2add7fca1619adde605dd6f68bc18d1a4624b6f761cd074fb060034142ff9f7e"
+    if Hardware::CPU.intel?
+      url "https://github.com/envoy/eta/releases/download/v1.1.12/eta_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "fc72a3c16b68cdaf213ba05c8093bc62b2ec3e897e200689e667d150fb92cbb3"
 
       def install
         bin.install "eta"
       end
     end
-    on_arm do
-      url "https://github.com/envoy/eta/releases/download/v1.1.11/eta_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "04faa321487efcb148eebfe11384f953f55593f0b4e82402bee78ce42753ac5f"
+    if Hardware::CPU.arm?
+      url "https://github.com/envoy/eta/releases/download/v1.1.12/eta_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "e345b45ee97f2328ec9de93d0458dc8097981fa7ffd95e49388a3ca9d4b2ded1"
 
       def install
         bin.install "eta"
@@ -28,20 +28,20 @@ class Eta < Formula
   end
 
   on_linux do
-    on_intel do
+    if Hardware::CPU.intel?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/envoy/eta/releases/download/v1.1.11/eta_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "743d7c5cfc899409f2ac37824f8d771673d4e7e1cada81ce36a90a179c4bf0d7"
+        url "https://github.com/envoy/eta/releases/download/v1.1.12/eta_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+        sha256 "df40c26adc0e31205d6e8643bc5868538cd2d88644054e94b75a4ceaa1415a63"
 
         def install
           bin.install "eta"
         end
       end
     end
-    on_arm do
+    if Hardware::CPU.arm?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/envoy/eta/releases/download/v1.1.11/eta_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "ede33728e913781b9794ce89b23f3899cb07b06e7e14cbad525f46b5638cdc40"
+        url "https://github.com/envoy/eta/releases/download/v1.1.12/eta_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+        sha256 "dcf7c12e7aae0e5930119fcdc2334fe6f1f71d7c5669300aad748a71d7ae1b99"
 
         def install
           bin.install "eta"
