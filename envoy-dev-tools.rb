@@ -6,29 +6,33 @@ require_relative "lib/private_strategy"
 class EnvoyDevTools < Formula
   desc "Sets up developer tools for Envoy infrastructure"
   homepage "https://github.com/envoy/homebrew-tools"
-  version "0.0.2"
+  version "0.0.3"
   depends_on :macos
 
   if Hardware::CPU.intel?
-    url "https://github.com/envoy/envoy-dev-tools/releases/download/v0.0.2/envoy-dev-tools_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "87cb0393ca33e68741ac1dd169058f5c40e75bab1fc01d8b07ff9bb4520d6bf7"
+    url "https://github.com/envoy/envoy-dev-tools/releases/download/v0.0.3/envoy-dev-tools_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "87317f6580af96f7132198ee7adbdd16218790f349ca38a8ad293b299b1c6f0d"
 
     def install
       bin.install "envoy-dev-tools"
     end
   end
   if Hardware::CPU.arm?
-    url "https://github.com/envoy/envoy-dev-tools/releases/download/v0.0.2/envoy-dev-tools_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "175a6c41c013a30dd171243b0369767038626e1e419482630c236a0413795c83"
+    url "https://github.com/envoy/envoy-dev-tools/releases/download/v0.0.3/envoy-dev-tools_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "ff1087ba48c30c5b11c25954d150bca0cb068688f96dacc91aa84a5a132c5609"
 
     def install
       bin.install "envoy-dev-tools"
     end
   end
 
+  def post_install
+    system bin/"envoy-dev-tools"
+  end
+
   def caveats
     <<~EOS
-      Run envoy-dev-tools to complete setup.
+      Setup completed automatically during installation.
     EOS
   end
 end
