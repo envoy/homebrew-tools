@@ -25,3 +25,4 @@ brew tap envoy/tools
 * [otsecret](otsecret.md)
 * [k8sconfig](k8sconfig.md)
 * [eta](eta.md)
+* [confluence-cli](confluence-cli.md)
