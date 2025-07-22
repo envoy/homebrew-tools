@@ -6,20 +6,20 @@ require_relative "lib/private_strategy"
 class Emd < Formula
   desc "Wrapper for mirrord dev tool"
   homepage "https://github.com/envoy/homebrew-tools"
-  version "0.0.1"
+  version "0.0.2"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/envoy/emd/releases/download/v0.0.1/emd_Darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "f14c50bba70755c4063bdf588c0bdc50f33017d4c61c6b4311e67a7d69045aa6"
+      url "https://github.com/envoy/emd/releases/download/v0.0.2/emd_Darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "7ecfc0500382aef07d68f25de4224b63fedd3ca34c167df826881bb9a8747b5d"
 
       def install
         bin.install "emd"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/envoy/emd/releases/download/v0.0.1/emd_Darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "8839fd99e667767563ea4cdd86b4c82d0796b6c97a22ffa672d1b7ac5535a1d2"
+      url "https://github.com/envoy/emd/releases/download/v0.0.2/emd_Darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "46d901d3a2d56a87bfa8938941fa06d5b1de4e4bb6c2437005dca22f15cd9e51"
 
       def install
         bin.install "emd"
@@ -29,15 +29,15 @@ class Emd < Formula
 
   on_linux do
     if Hardware::CPU.intel? and Hardware::CPU.is_64_bit?
-      url "https://github.com/envoy/emd/releases/download/v0.0.1/emd_Linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "c34ad530604d91c492e31c255f440e89a3aa33798cc4872f6510f9d072c76292"
+      url "https://github.com/envoy/emd/releases/download/v0.0.2/emd_Linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "1473c4868d4a3f16b71a150197fb9f5f64278775d18bc202773609df5aa8c913"
       def install
         bin.install "emd"
       end
     end
     if Hardware::CPU.arm? and Hardware::CPU.is_64_bit?
-      url "https://github.com/envoy/emd/releases/download/v0.0.1/emd_Linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "4a3be0767f8198ac0bf381ff36d93e2211e5f602e043e34f2556cf7a758134df"
+      url "https://github.com/envoy/emd/releases/download/v0.0.2/emd_Linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "7c0f997909d62bacc94eaaf23526a5c8c48cf521d239a2f5b499409ccfdaba0d"
       def install
         bin.install "emd"
       end
