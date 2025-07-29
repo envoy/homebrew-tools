@@ -17,6 +17,10 @@ export HOMEBREW_GITHUB_API_TOKEN=<use your personal PAT that has repo and workfl
 brew install k8sconfig
 ```
 
+If you run into this error `Error: undefined method 'start_with?' for false`
+
+Run `brew cleanup --prune=all` and then try installing k8sconfig again
+
 #### Prerequisite
 
 `k8sconfig` relies on the following tools
