@@ -6,20 +6,20 @@ require_relative "lib/private_strategy"
 class Esql < Formula
   desc ""
   homepage "https://github.com/envoy/esql"
-  version "0.0.2"
+  version "0.0.3"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/envoy/esql/releases/download/v0.0.2/esql_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "2973acf9d5dc5d34f4d27d314d3ec05707e0eef19940f9f55dec6fabb8e427d2"
+      url "https://github.com/envoy/esql/releases/download/v0.0.3/esql_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "ba27d1f92a3c7788afa92e3ce13bbf15977f45c55384ab63f9f604516224ba02"
 
       define_method(:install) do
         bin.install "esql"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/envoy/esql/releases/download/v0.0.2/esql_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "ccecfe25cc1470360ebf145c643d7c6074c616fb153b5847aa1e8d493a234a1e"
+      url "https://github.com/envoy/esql/releases/download/v0.0.3/esql_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "874d51657a94c3f560f4c525a59bef5dd32f1973a0c5b4fb7bfd0367fb7a10df"
 
       define_method(:install) do
         bin.install "esql"
@@ -29,15 +29,15 @@ class Esql < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/envoy/esql/releases/download/v0.0.2/esql_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "75a8e410791e6e35b6fc3fd59dbe16e0375fbc1b1d68b33d32ed4255891bf03b"
+      url "https://github.com/envoy/esql/releases/download/v0.0.3/esql_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "1145026d8ad2d7baf73913ecebb9db8b94a0ad07822439f259682bb09bc5b979"
       define_method(:install) do
         bin.install "esql"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/envoy/esql/releases/download/v0.0.2/esql_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "f073cae6e693a8e32dab107c70c9c9577a8b24b3b9cc8230427a6241e8da5f1f"
+      url "https://github.com/envoy/esql/releases/download/v0.0.3/esql_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "5aa6d953c9a812b7b0a619d934c0bcc9731a95a6b230bb5210d61f2fac870b49"
       define_method(:install) do
         bin.install "esql"
       end
