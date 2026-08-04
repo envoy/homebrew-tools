@@ -90,4 +90,45 @@ class Agentluminator < Formula
     # sample files.
     pkgshare.install(*leftover_contents) unless leftover_contents.empty?
   end
+  # >>> agentluminator caveats (injected by apply-homebrew-private-strategy.py) >>>
+  def caveats
+    <<~EOS
+      agentluminator installs from a PRIVATE Homebrew tap, so `brew install`
+      needs a GitHub token with `contents:read` exported before you install:
+
+        export HOMEBREW_GITHUB_API_TOKEN=<your-token>
+
+      First run — wire the Claude Code hooks and start the supervised daemon.
+      Either run the setup command:
+
+        agentluminator setup hooks install
+
+      ...or just launch a session with the short alias, which self-heals the
+      hook wiring and the daemon launchd plist automatically on first run:
+
+        al
+
+      `al` is the short launch alias created by this formula.
+
+      Verify your install at any time with:
+
+        agentluminator doctor
+    EOS
+  end
+  # <<< agentluminator caveats <<<
+
+  # >>> agentluminator post_install (injected by apply-homebrew-private-strategy.py) >>>
+  def post_install
+    # Best-effort: bring an existing install current on upgrade. This must
+    # never abort the brew install (missing user env, fresh install, etc.),
+    # so any failure is swallowed. It deliberately does NOT wire hooks or load
+    # launchd — Homebrew discourages writing to ~/.claude or loading launchd
+    # from post_install, and post_install may lack the user's env. That work is
+    # left to the launch self-heal (`al`) + the caveats above.
+    system bin/"agentluminator", "install-payload", "reconcile"
+  rescue StandardError => e
+    opoo "agentluminator: install-payload reconcile skipped: #{e}"
+  end
+  # <<< agentluminator post_install <<<
+
 end
