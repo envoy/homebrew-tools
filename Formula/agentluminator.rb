@@ -1,24 +1,26 @@
+require_relative "../lib/private_strategy"
+
 class Agentluminator < Formula
   desc "agentluminator canonical Rust binary — hook entry points + operator surface"
   homepage "https://github.com/envoy/agentluminator"
   version "2.10.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/envoy/agentluminator/releases/download/v2.10.0/agentluminator-aarch64-apple-darwin.tar.xz"
+      url "https://github.com/envoy/agentluminator/releases/download/v2.10.0/agentluminator-aarch64-apple-darwin.tar.xz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
       sha256 "9fdc948dc62cd13d94e4ef80d4d8fb80a02dc041d618703a18fefaf23c19a6be"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/envoy/agentluminator/releases/download/v2.10.0/agentluminator-x86_64-apple-darwin.tar.xz"
+      url "https://github.com/envoy/agentluminator/releases/download/v2.10.0/agentluminator-x86_64-apple-darwin.tar.xz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
       sha256 "250f1d37b16b87a1fef985e56e565882badf47fb5876d6a51e8fbc3cadcf1021"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/envoy/agentluminator/releases/download/v2.10.0/agentluminator-aarch64-unknown-linux-gnu.tar.xz"
+      url "https://github.com/envoy/agentluminator/releases/download/v2.10.0/agentluminator-aarch64-unknown-linux-gnu.tar.xz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
       sha256 "758baae0e965ce8d04953a5e2b748529d163aa60b29029c10b4cddac05921645"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/envoy/agentluminator/releases/download/v2.10.0/agentluminator-x86_64-unknown-linux-gnu.tar.xz"
+      url "https://github.com/envoy/agentluminator/releases/download/v2.10.0/agentluminator-x86_64-unknown-linux-gnu.tar.xz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
       sha256 "a1db507a4c235bff51e0c8fb84d8d606b0bf3e939c6703da8ec38ba0ade35581"
     end
   end
