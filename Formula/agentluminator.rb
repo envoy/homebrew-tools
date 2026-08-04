@@ -1,38 +1,60 @@
-require_relative "../lib/private_strategy"
-
 class Agentluminator < Formula
   desc "agentluminator canonical Rust binary — hook entry points + operator surface"
   homepage "https://github.com/envoy/agentluminator"
-  version "2.9.0"
+  version "2.10.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/envoy/agentluminator/releases/download/v2.9.0/agentluminator-aarch64-apple-darwin.tar.xz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "97b7e1677d3a9bb1cbf3c465c3854ba3dfffa8e7530d3cbab8a0d1689b259400"
+      url "https://github.com/envoy/agentluminator/releases/download/v2.10.0/agentluminator-aarch64-apple-darwin.tar.xz"
+      sha256 "9fdc948dc62cd13d94e4ef80d4d8fb80a02dc041d618703a18fefaf23c19a6be"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/envoy/agentluminator/releases/download/v2.9.0/agentluminator-x86_64-apple-darwin.tar.xz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "ea391d29cd74d6c3cbd69b69b3f97585574440a48bd0aec9c6621cf922e9c813"
+      url "https://github.com/envoy/agentluminator/releases/download/v2.10.0/agentluminator-x86_64-apple-darwin.tar.xz"
+      sha256 "250f1d37b16b87a1fef985e56e565882badf47fb5876d6a51e8fbc3cadcf1021"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/envoy/agentluminator/releases/download/v2.9.0/agentluminator-aarch64-unknown-linux-gnu.tar.xz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "5266f9918aee11405ac90f48b93e4edd27ca62edf8a689e7466a108b1265e72a"
+      url "https://github.com/envoy/agentluminator/releases/download/v2.10.0/agentluminator-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "758baae0e965ce8d04953a5e2b748529d163aa60b29029c10b4cddac05921645"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/envoy/agentluminator/releases/download/v2.9.0/agentluminator-x86_64-unknown-linux-gnu.tar.xz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "f18b5415f95f36f9381575ad6032900249f2dc596ab7bac3e77739f36155a187"
+      url "https://github.com/envoy/agentluminator/releases/download/v2.10.0/agentluminator-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "a1db507a4c235bff51e0c8fb84d8d606b0bf3e939c6703da8ec38ba0ade35581"
     end
   end
   license "MIT"
 
   BINARY_ALIASES = {
-    "aarch64-apple-darwin":              {},
-    "aarch64-unknown-linux-gnu":         {},
-    "x86_64-apple-darwin":               {},
-    "x86_64-unknown-linux-gnu":          {},
-    "x86_64-unknown-linux-musl-dynamic": {},
-    "x86_64-unknown-linux-musl-static":  {},
+    "aarch64-apple-darwin":              {
+      agentluminator: [
+        "al",
+      ],
+    },
+    "aarch64-unknown-linux-gnu":         {
+      agentluminator: [
+        "al",
+      ],
+    },
+    "x86_64-apple-darwin":               {
+      agentluminator: [
+        "al",
+      ],
+    },
+    "x86_64-unknown-linux-gnu":          {
+      agentluminator: [
+        "al",
+      ],
+    },
+    "x86_64-unknown-linux-musl-dynamic": {
+      agentluminator: [
+        "al",
+      ],
+    },
+    "x86_64-unknown-linux-musl-static":  {
+      agentluminator: [
+        "al",
+      ],
+    },
   }.freeze
 
   def target_triple
