@@ -1,24 +1,26 @@
+require_relative "../lib/private_strategy"
+
 class Agentluminator < Formula
   desc "agentluminator canonical Rust binary — hook entry points + operator surface"
   homepage "https://github.com/envoy/agentluminator"
   version "2.19.4"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/envoy/agentluminator/releases/download/v2.19.4/agentluminator-aarch64-apple-darwin.tar.xz"
+      url "https://github.com/envoy/agentluminator/releases/download/v2.19.4/agentluminator-aarch64-apple-darwin.tar.xz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
       sha256 "f912b9b9788bf09b5c789ec9e0e8f9d933ef75de4002411af22a9d9d3141b354"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/envoy/agentluminator/releases/download/v2.19.4/agentluminator-x86_64-apple-darwin.tar.xz"
+      url "https://github.com/envoy/agentluminator/releases/download/v2.19.4/agentluminator-x86_64-apple-darwin.tar.xz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
       sha256 "3bc663250b344358aa08cc61d44781f7fc25cefd97ec5cbcb32fa68aaadb8d08"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/envoy/agentluminator/releases/download/v2.19.4/agentluminator-aarch64-unknown-linux-gnu.tar.xz"
+      url "https://github.com/envoy/agentluminator/releases/download/v2.19.4/agentluminator-aarch64-unknown-linux-gnu.tar.xz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
       sha256 "931f65e56b348f482bbe037c80706e492f784930a9d16b83b2b866e19c7a9bd0"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/envoy/agentluminator/releases/download/v2.19.4/agentluminator-x86_64-unknown-linux-gnu.tar.xz"
+      url "https://github.com/envoy/agentluminator/releases/download/v2.19.4/agentluminator-x86_64-unknown-linux-gnu.tar.xz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
       sha256 "566fcf46e99edab181f583a0dadb7e0effffaa03d501e8f0993717c1f2ff4216"
     end
   end
@@ -96,4 +98,45 @@ class Agentluminator < Formula
     # sample files.
     pkgshare.install(*leftover_contents) unless leftover_contents.empty?
   end
+  # >>> agentluminator caveats (injected by apply-homebrew-private-strategy.py) >>>
+  def caveats
+    <<~EOS
+      agentluminator installs from a PRIVATE Homebrew tap, so `brew install`
+      needs a GitHub token with `contents:read` exported before you install:
+
+        export HOMEBREW_GITHUB_API_TOKEN=<your-token>
+
+      First run — wire the Claude Code hooks and start the supervised daemon.
+      Either run the setup command:
+
+        agentluminator setup hooks install
+
+      ...or just launch a session with the short alias, which self-heals the
+      hook wiring and the daemon launchd plist automatically on first run:
+
+        al
+
+      `al` is the short launch alias created by this formula.
+
+      Verify your install at any time with:
+
+        agentluminator doctor
+    EOS
+  end
+  # <<< agentluminator caveats <<<
+
+  # >>> agentluminator post_install (injected by apply-homebrew-private-strategy.py) >>>
+  def post_install
+    # Best-effort: bring an existing install current on upgrade. This must
+    # never abort the brew install (missing user env, fresh install, etc.),
+    # so any failure is swallowed. It deliberately does NOT wire hooks or load
+    # launchd — Homebrew discourages writing to ~/.claude or loading launchd
+    # from post_install, and post_install may lack the user's env. That work is
+    # left to the launch self-heal (`al`) + the caveats above.
+    system bin/"agentluminator", "install-payload", "reconcile"
+  rescue StandardError => e
+    opoo "agentluminator: install-payload reconcile skipped: #{e}"
+  end
+  # <<< agentluminator post_install <<<
+
 end
