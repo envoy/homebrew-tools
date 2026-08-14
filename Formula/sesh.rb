@@ -3,9 +3,9 @@ require_relative "../lib/private_strategy"
 class Sesh < Formula
   desc "Discovery-based switcher for AI coding sessions"
   homepage "https://github.com/envoy/sesh"
-  url "https://github.com/envoy/sesh/releases/download/v0.2.1/sesh-0.2.1.tar.gz",
+  url "https://github.com/envoy/sesh/releases/download/v0.2.2/sesh-0.2.2.tar.gz",
       using: GitHubPrivateRepositoryReleaseDownloadStrategy
-  sha256 "5375b8c528a581615704b09d82c53e5682fb0fa65570ed53eb02c3deede12139"
+  sha256 "480400fc984771253f2623a1e86666e6edba3b185100b4e8dcce4be3c64e0669"
   license "MIT"
 
   # One Node file, nothing to compile and nothing to vendor.
